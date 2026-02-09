@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Designer & AI in Game Dev 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f0ff;
+            --neon-magenta: #ff00e5;
+            --neon-yellow: #f0ff00;
+            --neon-green: #00ff88;
+            --bg-dark: #0a0a1a;
+            --bg-card: #111128;
+            --bg-card2: #1a1a3e;
+            --text-primary: #e8e8f0;
+            --text-muted: #8888aa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-cyan); border-radius: 3px; }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+            padding: 0.75rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        nav .logo { font-weight: 800; font-size: 1rem; color: var(--neon-cyan); letter-spacing: 1px; }
+        nav .nav-links { display: flex; gap: 1.5rem; }
+        nav .nav-links a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 500;
+            transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        nav .nav-links a:hover { color: var(--neon-cyan); }
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 6rem 2rem 4rem; position: relative;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(0, 240, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(255, 0, 229, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 100%, rgba(0, 255, 136, 0.04) 0%, transparent 40%);
+        }
+        .hero > * { position: relative; z-index: 1; }
+        .hero .badge {
+            display: inline-block; padding: 0.4rem 1.2rem; border-radius: 999px;
+            background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--neon-cyan); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta), var(--neon-yellow));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem); color: var(--text-muted); font-weight: 300; max-width: 600px;
+            margin-bottom: 3rem;
+        }
+        .hero .scroll-hint {
+            animation: bounce 2s infinite;
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+        .hero .scroll-hint span { display: block; font-size: 1.5rem; margin-top: 0.5rem; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+        /* Sections */
+        section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            display: inline-block; padding: 0.3rem 1rem; border-radius: 4px;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .label-cyan { background: rgba(0, 240, 255, 0.15); color: var(--neon-cyan); }
+        .label-magenta { background: rgba(255, 0, 229, 0.15); color: var(--neon-magenta); }
+        .label-green { background: rgba(0, 255, 136, 0.15); color: var(--neon-green); }
+        .label-yellow { background: rgba(240, 255, 0, 0.15); color: var(--neon-yellow); }
+
+        section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;
+        }
+        section p.lead { font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; max-width: 700px; }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 2rem; transition: all 0.3s;
+        }
+        .card:hover { border-color: rgba(0, 240, 255, 0.2); transform: translateY(-2px); }
+        .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+
+        /* Speaker cards */
+        .speaker-card {
+            display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem;
+            background: var(--bg-card); border-radius: 16px; border: 1px solid rgba(255,255,255,0.06);
+        }
+        .speaker-avatar {
+            width: 80px; height: 80px; border-radius: 50%; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; font-weight: 900;
+        }
+        .speaker-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .speaker-card .role { font-size: 0.8rem; color: var(--neon-cyan); font-weight: 600; }
+        .speaker-card .name-en { font-size: 0.75rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+        /* Pipeline */
+        .pipeline { display: flex; gap: 0; overflow-x: auto; padding-bottom: 1rem; }
+        .pipeline-step {
+            min-width: 200px; flex: 1; padding: 1.5rem; position: relative;
+            background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06);
+        }
+        .pipeline-step:first-child { border-radius: 16px 0 0 16px; }
+        .pipeline-step:last-child { border-radius: 0 16px 16px 0; }
+        .pipeline-step h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .pipeline-step p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+        .pipeline-step .step-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .pipeline-step::after {
+            content: ''; position: absolute; right: -12px; top: 50%; transform: translateY(-50%);
+            width: 0; height: 0; border-left: 12px solid var(--bg-card);
+            border-top: 20px solid transparent; border-bottom: 20px solid transparent; z-index: 2;
+        }
+        .pipeline-step:last-child::after { display: none; }
+
+        /* Demo Section — the star */
+        .demo-section {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0d0d2b 50%, var(--bg-dark) 100%);
+            padding: 5rem 0; position: relative;
+        }
+        .demo-section::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(255, 0, 229, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 70%, rgba(0, 240, 255, 0.06) 0%, transparent 50%);
+        }
+        .demo-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+        .demo-card {
+            background: var(--bg-card); border: 1px solid rgba(0, 240, 255, 0.15);
+            border-radius: 20px; padding: 2.5rem; margin-bottom: 3rem;
+            position: relative; overflow: hidden;
+        }
+        .demo-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+        }
+        .demo-card .demo-number {
+            position: absolute; top: 1.5rem; right: 2rem; font-size: 4rem; font-weight: 900;
+            color: rgba(0, 240, 255, 0.08); line-height: 1; font-family: 'JetBrains Mono', monospace;
+        }
+        .demo-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .demo-card .demo-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+
+        /* Prompt box */
+        .prompt-box {
+            background: #0d0d20; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 12px;
+            padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+            line-height: 1.7; color: var(--neon-green); position: relative; overflow: hidden;
+            white-space: pre-wrap; word-break: break-word;
+        }
+        .prompt-box::before {
+            content: 'PROMPT'; position: absolute; top: 0; right: 0;
+            background: var(--neon-cyan); color: var(--bg-dark); font-size: 0.6rem; font-weight: 700;
+            padding: 0.2rem 0.8rem; border-radius: 0 12px 0 8px; letter-spacing: 1px;
+        }
+        .prompt-box .prompt-label {
+            color: var(--neon-cyan); font-weight: 700; display: block; margin-bottom: 0.5rem;
+            font-size: 0.7rem; letter-spacing: 1px;
+        }
+        .copy-btn {
+            position: absolute; bottom: 0.75rem; right: 0.75rem;
+            background: rgba(0, 240, 255, 0.15); border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--neon-cyan); border-radius: 8px; padding: 0.4rem 1rem;
+            font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+            font-family: 'Prompt', sans-serif;
+        }
+        .copy-btn:hover { background: rgba(0, 240, 255, 0.3); }
+
+        /* Live Game */
+        .game-container {
+            background: #000; border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.2); margin-top: 1.5rem;
+        }
+        .game-container .game-header {
+            background: rgba(0, 240, 255, 0.08); padding: 0.75rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .game-container .game-header h4 { font-size: 0.85rem; font-weight: 700; color: var(--neon-cyan); }
+        .game-container .game-header .game-tag {
+            font-size: 0.6rem; background: rgba(0, 255, 136, 0.15); color: var(--neon-green);
+            padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 700; letter-spacing: 1px;
+        }
+        #gameCanvas { display: block; width: 100%; image-rendering: pixelated; }
+        .game-controls {
+            padding: 1rem 1.5rem; background: rgba(0, 240, 255, 0.03);
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+        }
+        .game-controls .keys { font-size: 0.75rem; color: var(--text-muted); }
+        .game-controls .keys kbd {
+            display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px; padding: 0.15rem 0.5rem; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem; color: var(--text-primary);
+        }
+        .game-btn {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            color: #000; border: none; border-radius: 8px; padding: 0.5rem 1.5rem;
+            font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: 'Prompt', sans-serif;
+            transition: all 0.2s;
+        }
+        .game-btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .game-stats {
+            display: flex; gap: 2rem; padding: 0.75rem 1.5rem;
+            background: rgba(0, 240, 255, 0.05); border-bottom: 1px solid rgba(0, 240, 255, 0.08);
+        }
+        .game-stats .stat { font-size: 0.75rem; color: var(--text-muted); }
+        .game-stats .stat span { color: var(--neon-yellow); font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+        /* AI Takeaway */
+        .takeaway {
+            text-align: center; padding: 6rem 2rem; position: relative;
+        }
+        .takeaway blockquote {
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem); font-weight: 800; line-height: 1.4;
+            max-width: 700px; margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .takeaway .sub-quote { font-size: 1.1rem; color: var(--text-muted); font-weight: 400; }
+
+        /* Tools showcase */
+        .tool-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px; padding: 0.5rem 1.2rem; font-size: 0.85rem; font-weight: 600;
+        }
+        .tool-badge .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+        /* Footer */
+        footer {
+            text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted); font-size: 0.8rem;
+        }
+        footer a { color: var(--neon-cyan); text-decoration: none; }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Mobile Game Controls */
+        .mobile-dpad {
+            display: none; padding: 1rem; justify-content: center; gap: 0.25rem;
+            background: rgba(0, 240, 255, 0.03); border-top: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .dpad-grid { display: grid; grid-template-columns: repeat(3, 52px); grid-template-rows: repeat(3, 52px); gap: 4px; }
+        .dpad-btn {
+            background: rgba(0, 240, 255, 0.12); border: 1px solid rgba(0, 240, 255, 0.25);
+            border-radius: 10px; color: var(--neon-cyan); font-size: 1.2rem;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            user-select: none; -webkit-user-select: none; touch-action: manipulation;
+        }
+        .dpad-btn:active { background: rgba(0, 240, 255, 0.3); }
+        .dpad-empty { background: none; border: none; }
+        @media (max-width: 768px) {
+            .mobile-dpad { display: flex; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">FORTAL // GAME DEV 2026</div>
+    <div class="nav-links">
+        <a href="#overview">OVERVIEW</a>
+        <a href="#pipeline">PIPELINE</a>
+        <a href="#demos">DEMOS</a>
+        <a href="#takeaway">TAKEAWAY</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="badge">Workshop // Feb 2026</div>
+    <h1>Game Designer<br>& AI</h1>
+    <p class="subtitle">in Game Development 2026</p>
+    <div style="display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center;">
+        <div class="tool-badge"><span class="dot" style="background: var(--neon-cyan);"></span> Claude</div>
+        <div class="tool-badge"><span class="dot" style="background: var(--neon-green);"></span> Gemini</div>
+        <div class="tool-badge"><span class="dot" style="background: var(--neon-magenta);"></span> ChatGPT</div>
+    </div>
+    <div class="scroll-hint">
+        scroll down
+        <span>&#8964;</span>
+    </div>
+</section>
+
+<!-- Speakers -->
+<section id="speakers" class="fade-up">
+    <span class="section-label label-cyan">SPEAKERS</span>
+    <h2>ผู้บรรยาย</h2>
+    <div class="grid-2" style="margin-top: 2rem;">
+        <div class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, var(--neon-cyan), #0066ff);">O</div>
+            <div>
+                <h3>วัลลภ วัฒนาราโชทัย (โอ๋)</h3>
+                <div class="name-en">WALLOP WATTANARACHOTHAI</div>
+                <div class="role">Lead Game Designer</div>
+            </div>
+        </div>
+        <div class="speaker-card">
+            <div class="speaker-avatar" style="background: linear-gradient(135deg, var(--neon-magenta), #ff6600);">P</div>
+            <div>
+                <h3>รัชพล ลุงหมาด (ภูมิ)</h3>
+                <div class="name-en">RATCHAPON LUNGMART</div>
+                <div class="role">ออกแบบภาพ & Generative AI</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Overview -->
+<section id="overview" class="fade-up">
+    <span class="section-label label-magenta">OVERVIEW</span>
+    <h2>Game Designer คืออะไร?</h2>
+    <p class="lead" style="margin-bottom: 2rem;">ออกแบบ<strong style="color: var(--neon-cyan);">เกม</strong> ออกแบบ<strong style="color: var(--neon-magenta);">ประสบการณ์การเล่นเกม</strong> และประสานงานกับ Dev Team ทั้ง Programmer, Artist, Game Editor ในการพัฒนา Game</p>
+    <div class="grid-2">
+        <div class="card">
+            <h3>Game Overview</h3>
+            <p>Game Idea & Concept, Player Target, Platform, Controller & Hardware</p>
+        </div>
+        <div class="card">
+            <h3>Game Mechanic & System</h3>
+            <p>Movement, Attack, Combo, Status, Hitbox, Combat System, Craft System, Level System, PvP, Co-op</p>
+        </div>
+        <div class="card">
+            <h3>Game Experience</h3>
+            <p>Controller UX, Gameplay Duration, Difficulty Curve, Learning Curve, Rewards & Punishment, Progression</p>
+        </div>
+        <div class="card">
+            <h3>Game Design Document</h3>
+            <p>สรุปเกมทั้งหมด, Proof of Concept, Dev Tools, Timeline & Milestone</p>
+        </div>
+    </div>
+</section>
+
+<!-- Pipeline -->
+<section id="pipeline" class="fade-up">
+    <span class="section-label label-green">PIPELINE</span>
+    <h2>Fortal Game Dev Pipeline</h2>
+    <div class="pipeline" style="margin-top: 2rem;">
+        <div class="pipeline-step" style="border-left: 3px solid var(--neon-cyan);">
+            <div class="step-icon">&#127919;</div>
+            <h4>Game Director</h4>
+            <p>กำหนดทิศทางเกม, Hardware, Technology, Style, Story, Sound Reference</p>
+        </div>
+        <div class="pipeline-step" style="border-left: 3px solid var(--neon-magenta);">
+            <div class="step-icon">&#127918;</div>
+            <h4>Game Designer</h4>
+            <p>Game Design Document, Gameplay Mechanic, Level Design, Player Experience</p>
+        </div>
+        <div class="pipeline-step" style="border-left: 3px solid var(--neon-yellow);">
+            <div class="step-icon">&#127912;</div>
+            <h4>Artist</h4>
+            <p>Concept Art, 2D Sprite, Texture, UX/UI, 3D Model, Animation, VFX</p>
+        </div>
+        <div class="pipeline-step" style="border-left: 3px solid var(--neon-green);">
+            <div class="step-icon">&#128187;</div>
+            <h4>Developer</h4>
+            <p>Core Game Programming, Game Editor, Online System, Backend, Tester</p>
+        </div>
+    </div>
+</section>
+
+<!-- AI in Game Design -->
+<section class="fade-up">
+    <span class="section-label label-yellow">AI x GAME DESIGN</span>
+    <h2>ใช้ AI อย่างไรใน Game Design</h2>
+    <div class="grid-2" style="margin-top: 2rem;">
+        <div class="card" style="border-left: 3px solid var(--neon-cyan);">
+            <h3>GDD: Idea & Research</h3>
+            <p>AI เป็นผู้ช่วยตอนสรุปร่าง Game Design Document &mdash; brainstorm ไอเดีย, research ข้อมูล, draft mechanics</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--neon-magenta);">
+            <h3>Proof of Concept</h3>
+            <p>สร้าง Game Demo อย่างรวดเร็ว เพื่อให้ทีมเห็นภาพ &mdash; ทดสอบ gameplay ก่อนลงมือพัฒนาจริง</p>
+        </div>
+    </div>
+    <div style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: rgba(240, 255, 0, 0.08); border: 1px solid rgba(240, 255, 0, 0.2); border-radius: 12px;">
+        <p style="font-size: 1rem; font-weight: 700; color: var(--neon-yellow);">&#9888;&#65039; AI ช่วยคิดเกมได้ แต่มนุษย์เราเป็นคนตัดสินใจเลือกและสร้างเกม</p>
+    </div>
+</section>
+
+<!-- ====== DEMO SECTION ====== -->
+<div class="demo-section" id="demos">
+    <div class="demo-inner">
+        <div class="fade-up" style="text-align: center; margin-bottom: 4rem;">
+            <span class="section-label label-magenta">HANDS-ON</span>
+            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem);">Demo Time</h2>
+            <p style="color: var(--text-muted); max-width: 500px; margin: 1rem auto 0;">ลองใช้ AI สร้าง Game Prototype ด้วยตัวเอง</p>
+        </div>
+
+        <!-- Demo 1: GDD with AI -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">01</div>
+            <span class="section-label label-cyan">GDD DEMO</span>
+            <h3>สร้าง Game Design Document ด้วย AI</h3>
+            <p class="demo-desc">ใช้ AI ช่วย brainstorm และสรุปไอเดียเกมเป็น GDD ฉบับย่อ &mdash; จาก concept สั้นๆ ไปจนถึง mechanic, target player, platform ทั้งหมดภายในไม่กี่นาที</p>
+            <div class="prompt-box">
+<span class="prompt-label">// ตัวอย่าง Prompt สร้าง GDD</span>
+ช่วยออกแบบ Game Design Document สำหรับเกมชื่อ "Lava Escape"
+
+Concept: เกม Multiplayer บนพื้น LED ขนาดใหญ่ ผู้เล่นต้องหลบพื้นลาวา
+Target: เด็ก-ผู้ใหญ่ เล่นตามงาน Event
+Platform: Physical LED Floor + Digital Display
+Players: 2-10 คน
+
+ช่วยสรุป:
+1. Game Overview
+2. Core Mechanic
+3. Game Flow (รอบละกี่วินาที, scoring)
+4. Difficulty Progression
+5. Win/Lose Condition
+                <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+            </div>
+        </div>
+
+        <!-- Demo 2: AI Prototype — Lava Escape -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">02</div>
+            <span class="section-label label-magenta">AI PROTOTYPE</span>
+            <h3>สร้าง Playable Prototype ด้วย Prompt เดียว</h3>
+            <p class="demo-desc">จากโจทย์ "Lava Escape" &mdash; ใช้ AI generate เป็น HTML Game ที่เล่นได้จริงทันที ด้านล่างคือเกมที่สร้างจาก prompt</p>
+
+            <div class="prompt-box" style="margin-bottom: 1.5rem;">
+<span class="prompt-label">// Prompt ที่ใช้สร้างเกม Lava Escape</span>
+อยากได้เกมชื่อว่า Lava Escape เป็น Game HTML ง่ายๆ โดย กติกา: พื้นที่ในสนามบางจุดจะเปลี่ยนเป็นพื้นลาวาและพื้นที่ปลอดภัย ผู้เล่นจะต้องวิ่งไปยืนในพื้นที่ปลอดภัย เพื่อเอาชีวิตรอดให้ได้นานที่สุด ทุกครั้งที่รอดจากลาวาได้ จะได้รับคะแนน
+
+Gameplay สำหรับเล่นบน PC เพื่อทดสอบ POC
+- จำลองสนาม LED พื้นที่ 10 x 20 ช่อง
+- ตัวละครผู้เล่นควบคุมด้วย WASD แทนตำแหน่งผู้เล่นด้วยวงกลม มี HP 5 หน่วย
+- เมื่อเริ่มเกม พื้นในสนามจะกระพริบสีส้มแสดงจุดที่ลาวาจะท่วม 3 วินาที
+- ผู้เล่นจะต้องวิ่งไปยืนในพื้นที่ปลอดภัยภายในเวลาที่กำหนด
+- เมื่อครบ 3 วิ จุดที่ลาวาท่วมจะเปลี่ยนเป็นสีแดง จุดที่ปลอดภัยจะเป็นสีเขียว
+- ถ้าผู้เล่นไม่โดนลาวาจะได้รับ 10 คะแนน ถ้าโดนลาวาจะโดนหัก 10 คะแนน
+
+ลองทำเป็นเกมที่เล่นบนเว็ปได้หน่อยนะ เป็น HTML เกม Design สวยๆ หน่อย เอาแนวๆ Cyberpunk ก็ได้
+                <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+            </div>
+
+            <!-- LIVE GAME -->
+            <div class="game-container">
+                <div class="game-header">
+                    <h4>&#9889; LAVA ESCAPE &mdash; AI Generated Prototype</h4>
+                    <span class="game-tag">PLAYABLE</span>
+                </div>
+                <div class="game-stats">
+                    <div class="stat">SCORE: <span id="score">0</span></div>
+                    <div class="stat">HP: <span id="hp">5</span></div>
+                    <div class="stat">ROUND: <span id="round">0</span></div>
+                    <div class="stat">TIME: <span id="timer">-</span></div>
+                </div>
+                <canvas id="gameCanvas" width="600" height="300"></canvas>
+                <div class="mobile-dpad">
+                    <div class="dpad-grid">
+                        <div class="dpad-empty"></div>
+                        <div class="dpad-btn" ontouchstart="mobileKey('w')" onmousedown="mobileKey('w')">&#9650;</div>
+                        <div class="dpad-empty"></div>
+                        <div class="dpad-btn" ontouchstart="mobileKey('a')" onmousedown="mobileKey('a')">&#9664;</div>
+                        <div class="dpad-empty"></div>
+                        <div class="dpad-btn" ontouchstart="mobileKey('d')" onmousedown="mobileKey('d')">&#9654;</div>
+                        <div class="dpad-empty"></div>
+                        <div class="dpad-btn" ontouchstart="mobileKey('s')" onmousedown="mobileKey('s')">&#9660;</div>
+                        <div class="dpad-empty"></div>
+                    </div>
+                </div>
+                <div class="game-controls">
+                    <div class="keys">Move: <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></div>
+                    <button class="game-btn" onclick="startGame()">&#9654; START GAME</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo 3: Other Prototypes -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">03</div>
+            <span class="section-label label-green">WORKSHOP</span>
+            <h3>ลองสร้างเกมของคุณเอง!</h3>
+            <p class="demo-desc">โจทย์: ใช้ AI (Gemini / Claude / ChatGPT) สร้าง Prototype Game ง่ายๆ ที่เล่นได้ใน Browser</p>
+            <div class="grid-2" style="margin-top: 1rem;">
+                <div class="card" style="border-top: 3px solid var(--neon-green);">
+                    <h3>&#128013; เกมงู (Snake)</h3>
+                    <p>Classic snake game &mdash; ลอง prompt ให้ AI สร้างเกมงูที่เล่นบนเว็บ พร้อม scoring และ speed ที่เพิ่มขึ้น</p>
+                </div>
+                <div class="card" style="border-top: 3px solid var(--neon-yellow);">
+                    <h3>&#127925; เกม Rhythm</h3>
+                    <p>กดปุ่มตามจังหวะเพลง &mdash; ลองออกแบบ mechanic แล้วให้ AI สร้าง prototype</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: var(--bg-card2); border-radius: 12px;">
+                <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
+                    <strong style="color: var(--neon-green);">Tip:</strong> เริ่มจากคิด Game Mechanic ก่อน &rarr; เขียน Prompt ที่อธิบาย gameplay ชัดเจน &rarr; ให้ AI สร้าง HTML &rarr; ทดสอบ &rarr; แก้ prompt ถ้าต้องปรับ
+                </p>
+            </div>
+        </div>
+
+        <!-- Fortal Battleground -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">04</div>
+            <span class="section-label label-yellow">CASE STUDY</span>
+            <h3>Fortal Battleground</h3>
+            <p class="demo-desc">ตัวอย่างเกมจริงที่ผสม Physical + Digital Player</p>
+            <div class="grid-3" style="margin-top: 1rem;">
+                <div class="card" style="text-align: center; border-top: 3px solid var(--neon-cyan);">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128694;</div>
+                    <h3>Vanguard</h3>
+                    <p>Physical Player<br>เคลื่อนที่บนพื้น LED</p>
+                </div>
+                <div class="card" style="text-align: center; border-top: 3px solid var(--neon-magenta);">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127918;</div>
+                    <h3>Striker</h3>
+                    <p>Digital Player<br>ควบคุมผ่านหน้าจอ</p>
+                </div>
+                <div class="card" style="text-align: center; border-top: 3px solid var(--neon-yellow);">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128218;</div>
+                    <h3>Commander</h3>
+                    <p>Strategic Player<br>วางแผนภาพรวม</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Takeaway -->
+<section class="takeaway fade-up" id="takeaway">
+    <span class="section-label label-cyan">TAKEAWAY</span>
+    <blockquote>AI ไม่ได้ออกแบบเกม<br>แต่ มนุษย์ ออกแบบเกม</blockquote>
+    <p class="sub-quote">AI เป็นเครื่องมือที่ทรงพลัง &mdash; แต่ความคิดสร้างสรรค์ การตัดสินใจ<br>และประสบการณ์ของมนุษย์คือหัวใจของ Game Design</p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>Game Designer & AI in Game Dev 2026 &mdash; <strong>Fortal Interactive</strong></p>
+    <p style="margin-top: 0.5rem;">built with AI by <a href="https://github.com/poomxchapon" target="_blank">@poomxchapon</a></p>
+</footer>
+
+<script>
+// ========== Scroll Animation ==========
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ========== Copy Prompt ==========
+function copyPrompt(btn) {
+    const box = btn.closest('.prompt-box');
+    const text = box.textContent.replace('COPY', '').replace(/\/\/ .*\n/, '').trim();
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'COPIED!';
+        setTimeout(() => btn.textContent = 'COPY', 1500);
+    });
+}
+
+// ========== LAVA ESCAPE GAME ==========
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const COLS = 20, ROWS = 10;
+let CELL;
+let player = { x: 10, y: 5 };
+let score = 0, hp = 5, round = 0;
+let grid = []; // 0=safe, 1=warning, 2=lava, 3=safe-revealed
+let gameRunning = false, phase = 'idle'; // idle, warning, reveal
+let phaseTimer = 0;
+let gameLoop = null;
+
+function resizeCanvas() {
+    const containerWidth = canvas.parentElement.clientWidth;
+    CELL = Math.floor(containerWidth / COLS);
+    canvas.width = COLS * CELL;
+    canvas.height = ROWS * CELL;
+    drawGrid();
+}
+window.addEventListener('resize', resizeCanvas);
+
+function initGrid() {
+    grid = [];
+    for (let r = 0; r < ROWS; r++) {
+        grid[r] = [];
+        for (let c = 0; c < COLS; c++) grid[r][c] = 0;
+    }
+}
+
+function generateLava() {
+    const lavaCount = Math.min(Math.floor(COLS * ROWS * (0.3 + round * 0.03)), Math.floor(COLS * ROWS * 0.7));
+    const cells = [];
+    for (let r = 0; r < ROWS; r++)
+        for (let c = 0; c < COLS; c++) { cells.push([r, c]); grid[r][c] = 0; }
+    // Shuffle
+    for (let i = cells.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cells[i], cells[j]] = [cells[j], cells[i]];
+    }
+    for (let i = 0; i < lavaCount; i++) grid[cells[i][0]][cells[i][1]] = 1; // warning
+}
+
+function drawGrid() {
+    ctx.fillStyle = '#0a0a1a';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    const now = Date.now();
+
+    for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+            const x = c * CELL, y = r * CELL;
+            let color = '#111128';
+            if (grid[r][c] === 1) {
+                // Warning: blink orange
+                const blink = Math.sin(now / 150) * 0.3 + 0.5;
+                color = `rgba(255, 160, 0, ${blink})`;
+            } else if (grid[r][c] === 2) {
+                color = '#cc1100'; // lava
+            } else if (grid[r][c] === 3) {
+                color = '#00aa44'; // safe revealed
+            }
+            ctx.fillStyle = color;
+            ctx.fillRect(x + 1, y + 1, CELL - 2, CELL - 2);
+            // Grid lines
+            ctx.strokeStyle = 'rgba(0, 240, 255, 0.06)';
+            ctx.strokeRect(x, y, CELL, CELL);
+        }
+    }
+
+    // Player
+    if (gameRunning || phase === 'idle') {
+        const px = player.x * CELL + CELL / 2;
+        const py = player.y * CELL + CELL / 2;
+        const pr = CELL * 0.35;
+        // Glow
+        const grd = ctx.createRadialGradient(px, py, 0, px, py, pr * 2);
+        grd.addColorStop(0, 'rgba(0, 240, 255, 0.4)');
+        grd.addColorStop(1, 'rgba(0, 240, 255, 0)');
+        ctx.fillStyle = grd;
+        ctx.fillRect(px - pr * 2, py - pr * 2, pr * 4, pr * 4);
+        // Circle
+        ctx.beginPath();
+        ctx.arc(px, py, pr, 0, Math.PI * 2);
+        ctx.fillStyle = '#00f0ff';
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+}
+
+function updateUI() {
+    document.getElementById('score').textContent = score;
+    document.getElementById('hp').textContent = hp;
+    document.getElementById('round').textContent = round;
+}
+
+function startGame() {
+    score = 0; hp = 5; round = 0; phase = 'idle';
+    player = { x: 10, y: 5 };
+    initGrid();
+    gameRunning = true;
+    updateUI();
+    if (gameLoop) cancelAnimationFrame(gameLoop);
+    nextRound();
+}
+
+function nextRound() {
+    if (hp <= 0) { endGame(); return; }
+    round++;
+    generateLava();
+    phase = 'warning';
+    phaseTimer = 3;
+    updateUI();
+    document.getElementById('timer').textContent = phaseTimer + 's';
+    const countdown = setInterval(() => {
+        phaseTimer--;
+        document.getElementById('timer').textContent = phaseTimer + 's';
+        if (phaseTimer <= 0) {
+            clearInterval(countdown);
+            revealLava();
+        }
+    }, 1000);
+    animate();
+}
+
+function revealLava() {
+    phase = 'reveal';
+    for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+            if (grid[r][c] === 1) grid[r][c] = 2; // lava
+            else grid[r][c] = 3; // safe
+        }
+    }
+    // Check player
+    if (grid[player.y][player.x] === 2) {
+        hp--; score -= 10;
+    } else {
+        score += 10;
+    }
+    updateUI();
+    document.getElementById('timer').textContent = '-';
+    // Pause then next round
+    setTimeout(() => {
+        if (gameRunning) nextRound();
+    }, 1500);
+}
+
+function endGame() {
+    gameRunning = false; phase = 'idle';
+    document.getElementById('timer').textContent = 'GAME OVER';
+}
+
+function animate() {
+    if (!gameRunning) return;
+    drawGrid();
+    gameLoop = requestAnimationFrame(animate);
+}
+
+// Controls
+document.addEventListener('keydown', (e) => {
+    if (!gameRunning || phase !== 'warning') return;
+    const key = e.key.toLowerCase();
+    if (key === 'w' && player.y > 0) player.y--;
+    else if (key === 's' && player.y < ROWS - 1) player.y++;
+    else if (key === 'a' && player.x > 0) player.x--;
+    else if (key === 'd' && player.x < COLS - 1) player.x++;
+});
+
+function mobileKey(key) {
+    if (!gameRunning || phase !== 'warning') return;
+    if (key === 'w' && player.y > 0) player.y--;
+    else if (key === 's' && player.y < ROWS - 1) player.y++;
+    else if (key === 'a' && player.x > 0) player.x--;
+    else if (key === 'd' && player.x < COLS - 1) player.x++;
+}
+
+// Initial draw
+resizeCanvas();
+initGrid();
+drawGrid();
+</script>
+
+</body>
+</html>
