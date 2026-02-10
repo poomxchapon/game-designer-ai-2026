@@ -279,6 +279,29 @@
         }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
+        /* GDD PDF Cards */
+        .gdd-pdf-card {
+            display: flex; gap: 1.2rem; padding: 1.5rem;
+            background: var(--bg-card2); border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 14px; cursor: pointer; transition: all 0.3s; align-items: flex-start;
+        }
+        .gdd-pdf-card:hover {
+            border-color: rgba(0, 240, 255, 0.4); transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.1);
+        }
+        .gdd-pdf-icon {
+            font-size: 2.5rem; flex-shrink: 0; width: 56px; height: 56px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 240, 255, 0.08); border-radius: 12px;
+        }
+        .gdd-pdf-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-primary); }
+        .gdd-pdf-info p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.6rem; }
+        .gdd-pdf-tag {
+            display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px;
+            color: var(--neon-cyan); background: rgba(0, 240, 255, 0.1);
+            padding: 0.2rem 0.7rem; border-radius: 4px; text-transform: uppercase;
+        }
+
         /* Mobile Game Controls */
         .mobile-dpad {
             display: none; padding: 1rem; justify-content: center; gap: 0.25rem;
@@ -432,12 +455,33 @@
             <p style="color: var(--text-muted); max-width: 500px; margin: 1rem auto 0;">ลองใช้ AI สร้าง Game Prototype ด้วยตัวเอง</p>
         </div>
 
-        <!-- Demo 1: GDD with AI -->
+        <!-- Demo 1: GDD Examples -->
         <div class="demo-card fade-up">
             <div class="demo-number">01</div>
-            <span class="section-label label-cyan">GDD DEMO</span>
-            <h3>สร้าง Game Design Document ด้วย AI</h3>
-            <p class="demo-desc">ใช้ AI ช่วย brainstorm และสรุปไอเดียเกมเป็น GDD ฉบับย่อ &mdash; จาก concept สั้นๆ ไปจนถึง mechanic, target player, platform ทั้งหมดภายในไม่กี่นาที</p>
+            <span class="section-label label-cyan">GDD EXAMPLES</span>
+            <h3>ตัวอย่าง Game Design Document</h3>
+            <p class="demo-desc">ก่อนจะให้ AI ช่วยสร้าง Prototype &mdash; มาดูกันก่อนว่า GDD จริงๆ หน้าตาเป็นยังไง เนื้อหาต้องมีอะไรบ้าง</p>
+
+            <div class="grid-2" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+                <div class="gdd-pdf-card" onclick="window.open('GDD-1-Example.pdf','_blank')">
+                    <div class="gdd-pdf-icon">&#128196;</div>
+                    <div class="gdd-pdf-info">
+                        <h4>GDD 1: Fortal Battle Ground</h4>
+                        <p>Co-Op MR 3v3 Territory Control &mdash; Physical e-Sports บนพื้น LED Floor พร้อม 3 Archetype: Vanguard, Striker, Commander</p>
+                        <span class="gdd-pdf-tag">PDF &bull; GAME MECHANIC</span>
+                    </div>
+                </div>
+                <div class="gdd-pdf-card" onclick="window.open('GDD-2-Example.pdf','_blank')">
+                    <div class="gdd-pdf-icon">&#128196;</div>
+                    <div class="gdd-pdf-info">
+                        <h4>GDD 2: Fortal Interactive System</h4>
+                        <p>ระบบ Phygital (Physical + Digital) &mdash; Hardware, Casual Game Library, Lava Escape POC, Snake Wars</p>
+                        <span class="gdd-pdf-tag">PDF &bull; FULL SYSTEM</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">&#128161; <strong style="color: var(--neon-cyan);">ลองใช้ AI สร้าง GDD ของคุณเอง:</strong></p>
             <div class="prompt-box">
 <span class="prompt-label">// ตัวอย่าง Prompt สร้าง GDD</span>
 ช่วยออกแบบ Game Design Document สำหรับเกมชื่อ "Lava Escape"
