@@ -265,6 +265,15 @@
         }
         .tool-badge .dot { width: 8px; height: 8px; border-radius: 50%; }
 
+        /* Tool Links */
+        .tool-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.4rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600;
+            text-decoration: none; color: var(--text-primary); border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg-card2); transition: all 0.3s;
+        }
+        .tool-link:hover { transform: translateY(-2px); border-color: var(--neon-cyan); box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15); }
+
         /* Footer */
         footer {
             text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.05);
@@ -286,7 +295,8 @@
             border-radius: 14px; cursor: pointer; transition: all 0.3s; align-items: flex-start;
         }
         .gdd-pdf-card:hover {
-            border-color: rgba(0, 240, 255, 0.4); transform: translateY(-3px);
+            border-color: rgba(0, 240, 255, 0.4);
+            transform: translateY(-3px);
             box-shadow: 0 8px 30px rgba(0, 240, 255, 0.1);
         }
         .gdd-pdf-icon {
@@ -329,6 +339,7 @@
     <div class="nav-links">
         <a href="#overview">OVERVIEW</a>
         <a href="#pipeline">PIPELINE</a>
+        <a href="#ai-tutorial">AI TUTORIAL</a>
         <a href="#demos">DEMOS</a>
         <a href="#takeaway">TAKEAWAY</a>
     </div>
@@ -446,6 +457,218 @@
     </div>
 </section>
 
+<!-- ====== AI TUTORIAL SECTIONS ====== -->
+
+<!-- Section A: เริ่มต้นใช้ AI -->
+<section id="ai-tutorial" class="fade-up">
+    <span class="section-label label-cyan">AI TUTORIAL</span>
+    <h2>เริ่มต้นใช้ AI สำหรับมือใหม่</h2>
+    <p class="lead" style="margin-bottom: 2rem;">AI Chatbot คือเครื่องมือที่เราพิมพ์คำสั่ง (Prompt) แล้ว AI จะตอบกลับ &mdash; คิดซะว่าเหมือนคุยกับผู้ช่วยที่ฉลาดมากๆ</p>
+
+    <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card" style="border-top: 3px solid var(--neon-cyan);">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">&#129302;</div>
+            <h3>Claude</h3>
+            <p>โดย Anthropic &mdash; เก่งเรื่องเขียนยาว วิเคราะห์ลึก คิดเป็นระบบ เหมาะกับงาน GDD และ research</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://claude.ai" target="_blank" class="tool-link" style="border-color: rgba(0, 240, 255, 0.3);">&#128279; claude.ai</a>
+            </div>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--neon-magenta);">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">&#128172;</div>
+            <h3>ChatGPT</h3>
+            <p>โดย OpenAI &mdash; เก่งรอบด้าน ใช้งานง่าย มีหลายโหมด เหมาะกับ brainstorm และ prototype</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://chatgpt.com" target="_blank" class="tool-link" style="border-color: rgba(255, 0, 229, 0.3);">&#128279; chatgpt.com</a>
+            </div>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--neon-green);">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">&#9734;</div>
+            <h3>Gemini</h3>
+            <p>โดย Google &mdash; เชื่อมต่อกับ Google Services, ค้นข้อมูลเก่ง เหมาะกับ research และวิเคราะห์</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://gemini.google.com" target="_blank" class="tool-link" style="border-color: rgba(0, 255, 136, 0.3);">&#128279; gemini.google.com</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--bg-card2); border-radius: 12px; border: 1px solid rgba(0, 240, 255, 0.1);">
+        <p style="font-size: 1rem; font-weight: 700; color: var(--neon-cyan); margin-bottom: 1rem;">&#128640; วิธีเริ่มใช้งาน (ทำได้เลยตอนนี้!)</p>
+        <div class="grid-2">
+            <div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+                    <strong style="color: var(--text-primary);">1.</strong> เปิดเว็บ AI ตัวใดตัวหนึ่ง (แนะนำ Claude หรือ ChatGPT)<br>
+                    <strong style="color: var(--text-primary);">2.</strong> สมัครบัญชี (ใช้ Google Account ได้)<br>
+                    <strong style="color: var(--text-primary);">3.</strong> พิมพ์คำถามหรือคำสั่งลงในช่อง chat
+                </p>
+            </div>
+            <div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+                    <strong style="color: var(--text-primary);">4.</strong> กด Enter แล้วรอ AI ตอบ<br>
+                    <strong style="color: var(--text-primary);">5.</strong> อ่านคำตอบ &rarr; ถ้าไม่ใช่สิ่งที่ต้องการ ก็พิมพ์เพิ่มได้<br>
+                    <strong style="color: var(--text-primary);">6.</strong> ลองเรื่อยๆ ยิ่งใช้ยิ่งเก่ง!
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section B: เขียน Prompt ให้ดี -->
+<section class="fade-up">
+    <span class="section-label label-magenta">PROMPT WRITING</span>
+    <h2>เขียน Prompt ยังไงให้ได้ผลลัพธ์ดี</h2>
+    <p class="lead" style="margin-bottom: 2rem;">Prompt คือ "คำสั่ง" ที่เราพิมพ์ให้ AI &mdash; ยิ่งเขียนชัด AI ยิ่งตอบตรงประเด็น</p>
+
+    <div class="grid-3" style="margin-top: 2rem;">
+        <div class="card" style="border-top: 3px solid var(--neon-cyan); text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127793;</div>
+            <h3>1. Context</h3>
+            <p>บอก AI ว่าคุณเป็นใคร กำลังทำอะไร</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--neon-cyan);">"ฉันเป็นนักศึกษา กำลังออกแบบเกม..."</p>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--neon-magenta); text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#127919;</div>
+            <h3>2. สิ่งที่ต้องการ</h3>
+            <p>บอกให้ชัดว่าอยากได้อะไร</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--neon-magenta);">"ช่วยออกแบบ Game Mechanic ให้หน่อย"</p>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--neon-green); text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128203;</div>
+            <h3>3. Format</h3>
+            <p>บอก AI ว่าอยากได้คำตอบแบบไหน</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--neon-green);">"สรุปเป็นตาราง 5 ข้อ"</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 2.5rem;">
+        <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem;">&#10060; Prompt ไม่ดี vs &#9989; Prompt ดี</h3>
+        <div class="grid-2">
+            <div class="prompt-box" style="border-color: rgba(255, 80, 80, 0.4);">
+<span class="prompt-label" style="color: #ff5050;">// &#10060; PROMPT ไม่ดี</span>
+ช่วยทำเกมให้หน่อย</div>
+            <div class="prompt-box">
+<span class="prompt-label">// &#9989; PROMPT ดี</span>
+ฉันเป็นนักศึกษา Game Design กำลังออกแบบเกม Puzzle Platformer 2D สำหรับเล่นบน PC
+
+ช่วยออกแบบ Core Mechanic 3 อย่างที่ทำให้เกมสนุก โดยมี:
+- กลไกหลักที่ผู้เล่นใช้บ่อย
+- กลไกรองที่เพิ่มความหลากหลาย
+- กลไกพิเศษที่ปลดล็อกทีหลัง
+
+สรุปเป็นตาราง: ชื่อกลไก / อธิบาย / ตัวอย่างเกมที่ใช้</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: rgba(255, 0, 229, 0.08); border: 1px solid rgba(255, 0, 229, 0.2); border-radius: 12px;">
+        <p style="font-size: 0.95rem; font-weight: 700; color: var(--neon-magenta); margin-bottom: 0.5rem;">&#128161; Pro Tips</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
+            &bull; ถ้า AI ตอบไม่ตรง &rarr; พิมพ์เพิ่มเติมในแชทเดิมได้ (ไม่ต้องเริ่มใหม่)<br>
+            &bull; ลองบอก AI ว่า "ช่วยปรับให้สั้นลง" หรือ "ขยายข้อ 2 ให้ละเอียดกว่านี้"<br>
+            &bull; ใส่ตัวอย่างให้ AI ดู &rarr; ยิ่งได้คำตอบที่ตรงใจ
+        </p>
+    </div>
+</section>
+
+<!-- Section C: Prompt Patterns สำหรับ Game Design -->
+<section class="fade-up">
+    <span class="section-label label-green">PROMPT PATTERNS</span>
+    <h2>Prompt Templates สำหรับ Game Design</h2>
+    <p class="lead" style="margin-bottom: 2rem;">ก็อป Prompt ด้านล่างไปวางใน AI ได้เลย แก้รายละเอียดให้ตรงกับเกมของคุณ</p>
+
+    <div style="margin-top: 2rem;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">&#127919; Pattern 1: Brainstorm ไอเดียเกม</h3>
+        <div class="prompt-box">
+<span class="prompt-label">// BRAINSTORM GAME IDEAS</span>
+ฉันอยากออกแบบเกมแนว [ประเภทเกม เช่น Puzzle / Action / Horror]
+สำหรับแพลตฟอร์ม [PC / Mobile / Web]
+กลุ่มเป้าหมายคือ [เด็ก / วัยรุ่น / ทั่วไป]
+
+ช่วย brainstorm ไอเดียเกมมา 5 แบบ แต่ละแบบมี:
+- ชื่อเกม
+- Concept สั้นๆ 1-2 บรรทัด
+- จุดเด่นที่แตกต่างจากเกมอื่น
+- Core Mechanic หลัก
+            <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">&#128196; Pattern 2: สร้าง Game Design Document</h3>
+        <div class="prompt-box">
+<span class="prompt-label">// GENERATE GDD</span>
+ช่วยสร้าง Game Design Document สำหรับเกมชื่อ "[ชื่อเกม]"
+
+Concept: [อธิบายเกมสั้นๆ]
+Genre: [แนวเกม]
+Platform: [แพลตฟอร์ม]
+Players: [จำนวนผู้เล่น]
+Target Audience: [กลุ่มเป้าหมาย]
+
+ช่วยเขียน GDD ครอบคลุม:
+1. Game Overview (concept, unique selling point)
+2. Core Gameplay Mechanics
+3. Game Flow (เริ่มเกม &rarr; เล่น &rarr; จบเกม)
+4. Level / Difficulty Progression
+5. Art Style Direction
+6. Technical Requirements
+            <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;">&#128187; Pattern 3: สร้าง Prototype</h3>
+        <div class="prompt-box">
+<span class="prompt-label">// BUILD PROTOTYPE</span>
+สร้างเกม HTML ที่เล่นบนเว็บได้ ชื่อ "[ชื่อเกม]"
+
+กติกา:
+- [อธิบายวิธีเล่น]
+- [เงื่อนไขชนะ/แพ้]
+- [ระบบคะแนน]
+
+Gameplay:
+- ควบคุมด้วย [keyboard / mouse / touch]
+- สนามขนาด [กว้าง x สูง]
+- ตัวละครเป็น [รูปแบบ]
+
+Design: สไตล์ [Cyberpunk / Retro / Minimal / Pixel Art]
+ทำเป็นไฟล์ HTML ไฟล์เดียวที่เปิดเล่นได้เลย
+            <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+        </div>
+    </div>
+</section>
+
+<!-- Section D: ข้อควรระวัง -->
+<section class="fade-up">
+    <span class="section-label label-yellow">CAUTION</span>
+    <h2>ข้อควรระวังในการใช้ AI</h2>
+    <p class="lead" style="margin-bottom: 2rem;">AI เป็นเครื่องมือที่เก่งมาก แต่มีข้อจำกัดที่ต้องรู้</p>
+
+    <div class="grid-2" style="margin-top: 2rem;">
+        <div class="card" style="border-left: 3px solid #ff5050;">
+            <h3>&#128165; AI Hallucination</h3>
+            <p>AI อาจ "แต่งข้อมูล" ที่ดูสมจริงแต่ไม่จริง &mdash; ข้อมูลตัวเลข สถิติ ชื่อเกม ต้องตรวจสอบด้วยตัวเองเสมอ</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--neon-yellow);">
+            <h3>&#128269; ต้องทดสอบเสมอ</h3>
+            <p>Code ที่ AI สร้างอาจมี bug &mdash; ต้องเทสต์จริง ลองเล่นจริง อย่าเชื่อว่า AI ทำถูก 100%</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--neon-cyan);">
+            <h3>&#128295; AI เป็นเครื่องมือ</h3>
+            <p>AI ช่วยได้เร็ว แต่ไม่ได้แทน Game Designer &mdash; ความคิดสร้างสรรค์ การตัดสินใจ ยังเป็นของมนุษย์</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--neon-magenta);">
+            <h3>&#9888;&#65039; อย่า Copy-Paste สุ่มสี่สุ่มห้า</h3>
+            <p>อ่านและทำความเข้าใจก่อนใช้ &mdash; ถ้าไม่เข้าใจสิ่งที่ AI ตอบ ให้ถาม AI อธิบายเพิ่ม หรือถามอาจารย์</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(240, 255, 0, 0.08); border: 1px solid rgba(240, 255, 0, 0.2); border-radius: 12px; text-align: center;">
+        <p style="font-size: 1.1rem; font-weight: 800; color: var(--neon-yellow); margin-bottom: 0.5rem;">&#128161; Key Takeaway</p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.7;">ใช้ AI เป็น <strong style="color: var(--text-primary);">จุดเริ่มต้น</strong> ไม่ใช่คำตอบสุดท้าย<br>คิดเอง &rarr; ให้ AI ช่วย &rarr; ตรวจสอบ &rarr; ปรับปรุง &rarr; ทำให้เป็นของคุณ</p>
+    </div>
+</section>
+
 <!-- ====== DEMO SECTION ====== -->
 <div class="demo-section" id="demos">
     <div class="demo-inner">
@@ -462,8 +685,8 @@
             <h3>ตัวอย่าง Game Design Document</h3>
             <p class="demo-desc">ก่อนจะให้ AI ช่วยสร้าง Prototype &mdash; มาดูกันก่อนว่า GDD จริงๆ หน้าตาเป็นยังไง เนื้อหาต้องมีอะไรบ้าง</p>
 
-            <div class="grid-2" style="margin-top: 1.5rem; margin-bottom: 2rem;">
-                <div class="gdd-pdf-card" onclick="window.open('GDD-1-Example.pdf','_blank')">
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="gdd-pdf-card" onclick="openPDF('GDD-1-Example.pdf')">
                     <div class="gdd-pdf-icon">&#128196;</div>
                     <div class="gdd-pdf-info">
                         <h4>GDD 1: Fortal Battle Ground</h4>
@@ -471,7 +694,7 @@
                         <span class="gdd-pdf-tag">PDF &bull; GAME MECHANIC</span>
                     </div>
                 </div>
-                <div class="gdd-pdf-card" onclick="window.open('GDD-2-Example.pdf','_blank')">
+                <div class="gdd-pdf-card" onclick="openPDF('GDD-2-Example.pdf')">
                     <div class="gdd-pdf-icon">&#128196;</div>
                     <div class="gdd-pdf-info">
                         <h4>GDD 2: Fortal Interactive System</h4>
@@ -481,8 +704,9 @@
                 </div>
             </div>
 
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">&#128161; <strong style="color: var(--neon-cyan);">ลองใช้ AI สร้าง GDD ของคุณเอง:</strong></p>
-            <div class="prompt-box">
+            <div style="margin-top: 2rem;">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">&#128161; <strong style="color: var(--neon-cyan);">ลองใช้ AI สร้าง GDD ของคุณเอง:</strong></p>
+                <div class="prompt-box">
 <span class="prompt-label">// ตัวอย่าง Prompt สร้าง GDD</span>
 ช่วยออกแบบ Game Design Document สำหรับเกมชื่อ "Lava Escape"
 
@@ -497,7 +721,8 @@ Players: 2-10 คน
 3. Game Flow (รอบละกี่วินาที, scoring)
 4. Difficulty Progression
 5. Win/Lose Condition
-                <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+                    <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+                </div>
             </div>
         </div>
 
@@ -557,45 +782,10 @@ Gameplay สำหรับเล่นบน PC เพื่อทดสอบ 
             </div>
         </div>
 
-        <!-- Demo 3: Snake Wars -->
+        <!-- Demo 3: Other Prototypes -->
         <div class="demo-card fade-up">
             <div class="demo-number">03</div>
-            <span class="section-label label-green">AI PROTOTYPE</span>
-            <h3>Snake Wars &mdash; Battle Royale</h3>
-            <p class="demo-desc">เกมงู 2-4 ผู้เล่น บนระบบ Fortal Interactive &mdash; มี <strong style="color: var(--neon-cyan);">LED Floor Controller</strong> จำลองพื้น LED + <strong style="color: var(--neon-magenta);">Projector Display</strong> แสดงเกม พร้อม Scoring, Respawn, Special Food</p>
-
-            <div class="grid-2" style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-                <div class="card" style="border-top: 3px solid #FF1744; text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#127918;</div>
-                    <h3>Game Display</h3>
-                    <p>Projector จำลอง &mdash; งู 2-4 ตัว, อาหาร, Special Food, Kill System</p>
-                </div>
-                <div class="card" style="border-top: 3px solid #00E5FF; text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">&#129518;</div>
-                    <h3>LED Floor Controller</h3>
-                    <p>จำลองพื้น LED 15x6 &mdash; กดปุ่มทิศทาง / คลิกได้ / ต่อ Unity ได้</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-bottom: 1.5rem;">
-                <button class="game-btn" onclick="window.open('snake-war.html','_blank')" style="font-size: 1rem; padding: 0.75rem 2.5rem;">&#128013; PLAY SNAKE WARS</button>
-            </div>
-
-            <div style="padding: 1rem 1.5rem; background: var(--bg-card2); border-radius: 12px;">
-                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;">
-                    <strong style="color: var(--neon-green);">Controls:</strong>
-                    P1 <kbd style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.1rem 0.4rem; font-family: 'JetBrains Mono',monospace; font-size: 0.75rem;">WASD</kbd> &bull;
-                    P2 <kbd style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.1rem 0.4rem; font-family: 'JetBrains Mono',monospace; font-size: 0.75rem;">IJKL</kbd> &bull;
-                    P3 <kbd style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.1rem 0.4rem; font-family: 'JetBrains Mono',monospace; font-size: 0.75rem;">Arrows</kbd> &bull;
-                    P4 <kbd style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; padding: 0.1rem 0.4rem; font-family: 'JetBrains Mono',monospace; font-size: 0.75rem;">Numpad</kbd>
-                </p>
-            </div>
-        </div>
-
-        <!-- Demo 4: Other Prototypes -->
-        <div class="demo-card fade-up">
-            <div class="demo-number">04</div>
-            <span class="section-label label-yellow">WORKSHOP</span>
+            <span class="section-label label-green">WORKSHOP</span>
             <h3>ลองสร้างเกมของคุณเอง!</h3>
             <p class="demo-desc">โจทย์: ใช้ AI (Gemini / Claude / ChatGPT) สร้าง Prototype Game ง่ายๆ ที่เล่นได้ใน Browser</p>
             <div class="grid-2" style="margin-top: 1rem;">
@@ -617,7 +807,7 @@ Gameplay สำหรับเล่นบน PC เพื่อทดสอบ 
 
         <!-- Fortal Battleground -->
         <div class="demo-card fade-up">
-            <div class="demo-number">05</div>
+            <div class="demo-number">04</div>
             <span class="section-label label-yellow">CASE STUDY</span>
             <h3>Fortal Battleground</h3>
             <p class="demo-desc">ตัวอย่างเกมจริงที่ผสม Physical + Digital Player</p>
@@ -661,6 +851,11 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ========== Open PDF ==========
+function openPDF(filename) {
+    window.open(filename, '_blank');
+}
 
 // ========== Copy Prompt ==========
 function copyPrompt(btn) {
@@ -852,7 +1047,6 @@ function mobileKey(key) {
 resizeCanvas();
 initGrid();
 drawGrid();
-
 </script>
 
 </body>
