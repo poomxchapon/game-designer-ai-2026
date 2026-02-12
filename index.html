@@ -341,6 +341,7 @@
         <a href="#pipeline">PIPELINE</a>
         <a href="#ai-tutorial">AI TUTORIAL</a>
         <a href="#demos">DEMOS</a>
+        <a href="#assignment">ASSIGNMENT</a>
         <a href="#takeaway">TAKEAWAY</a>
     </div>
 </nav>
@@ -355,6 +356,7 @@
         <div class="tool-badge"><span class="dot" style="background: var(--neon-green);"></span> Gemini</div>
         <div class="tool-badge"><span class="dot" style="background: var(--neon-magenta);"></span> ChatGPT</div>
     </div>
+    <a href="https://docs.google.com/presentation/d/1Fm9E_3CjgROlJIZBDOIGY386SHONPgL0i_Vf-uCOUJ0/edit?slide=id.g3bd376dca1b_2_228#slide=id.g3bd376dca1b_2_228" target="_blank" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.8rem 2rem; border-radius: 12px; font-size: 1rem; font-weight: 700; text-decoration: none; color: #000; background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta)); transition: all 0.3s; margin-bottom: 3rem; box-shadow: 0 4px 25px rgba(0, 240, 255, 0.3);">&#127916; &#3648;&#3611;&#3636;&#3604;&#3626;&#3652;&#3621;&#3604;&#3660;&#3611;&#3619;&#3632;&#3585;&#3629;&#3610;&#3585;&#3634;&#3619;&#3626;&#3629;&#3609;</a>
     <div class="scroll-hint">
         scroll down
         <span>&#8964;</span>
@@ -678,9 +680,57 @@ Design: สไตล์ [Cyberpunk / Retro / Minimal / Pixel Art]
             <p style="color: var(--text-muted); max-width: 500px; margin: 1rem auto 0;">ลองใช้ AI สร้าง Game Prototype ด้วยตัวเอง</p>
         </div>
 
-        <!-- Demo 1: AI Prototype — Lava Escape -->
+        <!-- Demo 1: GDD Examples -->
         <div class="demo-card fade-up">
             <div class="demo-number">01</div>
+            <span class="section-label label-cyan">GDD EXAMPLES</span>
+            <h3>ตัวอย่าง Game Design Document</h3>
+            <p class="demo-desc">ก่อนจะให้ AI ช่วยสร้าง Prototype &mdash; มาดูกันก่อนว่า GDD จริงๆ หน้าตาเป็นยังไง เนื้อหาต้องมีอะไรบ้าง</p>
+
+            <div class="grid-2" style="margin-top: 1.5rem;">
+                <div class="gdd-pdf-card" onclick="openPDF('GDD-1-Example.pdf')">
+                    <div class="gdd-pdf-icon">&#128196;</div>
+                    <div class="gdd-pdf-info">
+                        <h4>GDD 1: Fortal Battle Ground</h4>
+                        <p>Co-Op MR 3v3 Territory Control &mdash; Physical e-Sports บนพื้น LED Floor พร้อม 3 Archetype: Vanguard, Striker, Commander</p>
+                        <span class="gdd-pdf-tag">PDF &bull; GAME MECHANIC</span>
+                    </div>
+                </div>
+                <div class="gdd-pdf-card" onclick="openPDF('GDD-2-Example.pdf')">
+                    <div class="gdd-pdf-icon">&#128196;</div>
+                    <div class="gdd-pdf-info">
+                        <h4>GDD 2: Fortal Interactive System</h4>
+                        <p>ระบบ Phygital (Physical + Digital) &mdash; Hardware, Casual Game Library, Lava Escape POC, Snake Wars</p>
+                        <span class="gdd-pdf-tag">PDF &bull; FULL SYSTEM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">&#128161; <strong style="color: var(--neon-cyan);">ลองใช้ AI สร้าง GDD ของคุณเอง:</strong></p>
+                <div class="prompt-box">
+<span class="prompt-label">// ตัวอย่าง Prompt สร้าง GDD</span>
+ช่วยออกแบบ Game Design Document สำหรับเกมชื่อ "Lava Escape"
+
+Concept: เกม Multiplayer บนพื้น LED ขนาดใหญ่ ผู้เล่นต้องหลบพื้นลาวา
+Target: เด็ก-ผู้ใหญ่ เล่นตามงาน Event
+Platform: Physical LED Floor + Digital Display
+Players: 2-10 คน
+
+ช่วยสรุป:
+1. Game Overview
+2. Core Mechanic
+3. Game Flow (รอบละกี่วินาที, scoring)
+4. Difficulty Progression
+5. Win/Lose Condition
+                    <button class="copy-btn" onclick="copyPrompt(this)">COPY</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Demo 2: AI Prototype — Lava Escape -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">02</div>
             <span class="section-label label-magenta">AI PROTOTYPE</span>
             <h3>สร้าง Playable Prototype ด้วย Prompt เดียว</h3>
             <p class="demo-desc">จากโจทย์ "Lava Escape" &mdash; ใช้ AI generate เป็น HTML Game ที่เล่นได้จริงทันที ด้านล่างคือเกมที่สร้างจาก prompt</p>
@@ -734,9 +784,9 @@ Gameplay สำหรับเล่นบน PC เพื่อทดสอบ 
             </div>
         </div>
 
-        <!-- Demo 2: Other Prototypes -->
+        <!-- Demo 3: Other Prototypes -->
         <div class="demo-card fade-up">
-            <div class="demo-number">02</div>
+            <div class="demo-number">03</div>
             <span class="section-label label-green">WORKSHOP</span>
             <h3>ลองสร้างเกมของคุณเอง!</h3>
             <p class="demo-desc">โจทย์: ใช้ AI (Gemini / Claude / ChatGPT) สร้าง Prototype Game ง่ายๆ ที่เล่นได้ใน Browser</p>
@@ -759,7 +809,7 @@ Gameplay สำหรับเล่นบน PC เพื่อทดสอบ 
 
         <!-- Fortal Battleground -->
         <div class="demo-card fade-up">
-            <div class="demo-number">03</div>
+            <div class="demo-number">04</div>
             <span class="section-label label-yellow">CASE STUDY</span>
             <h3>Fortal Battleground</h3>
             <p class="demo-desc">ตัวอย่างเกมจริงที่ผสม Physical + Digital Player</p>
@@ -784,6 +834,191 @@ Gameplay สำหรับเล่นบน PC เพื่อทดสอบ 
     </div>
 </div>
 
+<!-- Assignment by พี่โอ๋ -->
+<div class="demo-section" id="assignment">
+    <div class="demo-inner">
+        <div class="fade-up" style="text-align: center; margin-bottom: 4rem;">
+            <span class="section-label label-yellow">ASSIGNMENT</span>
+            <h2 style="font-size: clamp(2rem, 5vw, 3.5rem);">Assignment by &#3614;&#3637;&#3656;&#3650;&#3629;&#3659;</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto 0;">&#3650;&#3592;&#3607;&#3618;&#3660;&#3629;&#3629;&#3585;&#3649;&#3610;&#3610;&#3648;&#3585;&#3617; Physical + Digital &#3610;&#3609; Interactive LED Floor</p>
+        </div>
+
+        <!-- PDF Download -->
+        <div class="fade-up" style="margin-bottom: 3rem;">
+            <div class="gdd-pdf-card" onclick="openPDF('Assignment-by-PiO.pdf')" style="max-width: 600px; margin: 0 auto; border-color: rgba(240, 255, 0, 0.2);">
+                <div class="gdd-pdf-icon" style="background: rgba(240, 255, 0, 0.1);">&#128196;</div>
+                <div class="gdd-pdf-info">
+                    <h4>Game Design Class &mdash; Assignment</h4>
+                    <p>&#3650;&#3592;&#3607;&#3618;&#3660;&#3629;&#3629;&#3585;&#3649;&#3610;&#3610;&#3648;&#3585;&#3617;&#3593;&#3610;&#3633;&#3610;&#3648;&#3605;&#3655;&#3617; &#3614;&#3619;&#3657;&#3629;&#3617;&#3648;&#3591;&#3639;&#3656;&#3629;&#3609;&#3652;&#3586;, Hardware Setup &#3649;&#3621;&#3632;&#3605;&#3633;&#3623;&#3629;&#3618;&#3656;&#3634;&#3591; Lava Escape</p>
+                    <span class="gdd-pdf-tag" style="color: var(--neon-yellow); background: rgba(240, 255, 0, 0.1);">PDF &bull; DOWNLOAD</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overview Card -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">&#9733;</div>
+            <span class="section-label label-yellow">OVERVIEW</span>
+            <h3>&#3648;&#3591;&#3639;&#3656;&#3629;&#3609;&#3652;&#3586;&#3585;&#3634;&#3619;&#3629;&#3629;&#3585;&#3649;&#3610;&#3610;</h3>
+            <p class="demo-desc">&#3629;&#3629;&#3585;&#3649;&#3610;&#3610;&#3648;&#3585;&#3617;&#3649;&#3610;&#3610; Physical + Digital &#3607;&#3637;&#3656;&#3612;&#3626;&#3634;&#3609;&#3650;&#3621;&#3585;&#3592;&#3619;&#3636;&#3591;&#3585;&#3633;&#3610;&#3650;&#3621;&#3585;&#3604;&#3636;&#3592;&#3636;&#3607;&#3633;&#3621;&#3648;&#3586;&#3657;&#3634;&#3604;&#3657;&#3623;&#3618;&#3585;&#3633;&#3609; &#3650;&#3604;&#3618;&#3651;&#3594;&#3657;&#3648;&#3607;&#3588;&#3650;&#3609;&#3650;&#3621;&#3618;&#3637; Interactive LED Floor, Projector Wall</p>
+
+            <h4 style="font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 1rem; color: var(--neon-yellow);">Casual Gameplay Requirements</h4>
+            <div class="grid-2">
+                <div class="card" style="border-left: 3px solid var(--neon-yellow);">
+                    <h3>&#127918; Gameplay</h3>
+                    <p>&#3648;&#3621;&#3656;&#3609;&#3626;&#3609;&#3640;&#3585; &#3612;&#3656;&#3629;&#3609;&#3588;&#3621;&#3634;&#3618; &#3648;&#3627;&#3617;&#3634;&#3632;&#3626;&#3635;&#3627;&#3619;&#3633;&#3610;&#3588;&#3619;&#3629;&#3610;&#3588;&#3619;&#3633;&#3623; &#3585;&#3621;&#3640;&#3656;&#3617;&#3648;&#3614;&#3639;&#3656;&#3629;&#3609;<br>&#3652;&#3617;&#3656;&#3617;&#3637; Ranking &#3610;&#3633;&#3591;&#3588;&#3633;&#3610; &bull; &#3611;&#3619;&#3633;&#3610;&#3588;&#3623;&#3634;&#3617;&#3618;&#3634;&#3585;&#3605;&#3634;&#3617;&#3585;&#3621;&#3640;&#3656;&#3617;<br>Walk-in &#3648;&#3621;&#3656;&#3609;&#3652;&#3604;&#3657;&#3648;&#3621;&#3618; &#3648;&#3586;&#3657;&#3634;&#3651;&#3592;&#3652;&#3604;&#3657;&#3591;&#3656;&#3634;&#3618;&#3651;&#3609; 30 &#3623;&#3636;&#3609;&#3634;&#3607;&#3637;</p>
+                </div>
+                <div class="card" style="border-left: 3px solid var(--neon-green);">
+                    <h3>&#127912; Design</h3>
+                    <p>Theme &#3626;&#3604;&#3651;&#3626; &#3627;&#3621;&#3634;&#3585;&#3627;&#3621;&#3634;&#3618; (&#3626;&#3633;&#3605;&#3623;&#3660;, &#3612;&#3621;&#3652;&#3617;&#3657;, &#3629;&#3623;&#3585;&#3634;&#3624;, &#3649;&#3615;&#3609;&#3605;&#3634;&#3595;&#3637;)<br>&#3619;&#3629;&#3610;&#3585;&#3634;&#3619;&#3648;&#3621;&#3656;&#3609;&#3626;&#3633;&#3657;&#3609; 2-5 &#3609;&#3634;&#3607;&#3637;<br>Fail-Safe: &#3612;&#3636;&#3604;&#3652;&#3617;&#3656;&#3592;&#3610;&#3648;&#3585;&#3617; &#3649;&#3588;&#3656;&#3627;&#3633;&#3585;&#3588;&#3632;&#3649;&#3609;&#3609;</p>
+                </div>
+                <div class="card" style="border-left: 3px solid var(--neon-cyan);">
+                    <h3>&#128187; Platform</h3>
+                    <p>&#3619;&#3629;&#3591;&#3619;&#3633;&#3610;&#3607;&#3633;&#3657;&#3591; Single Lane &#3649;&#3621;&#3632; Dual Lane<br>Visual Feedback &#3594;&#3633;&#3604;&#3648;&#3592;&#3609; (&#3626;&#3637;/&#3648;&#3626;&#3637;&#3618;&#3591;/Animation)</p>
+                </div>
+                <div class="card" style="border-left: 3px solid var(--neon-magenta);">
+                    <h3>&#127919; Theme</h3>
+                    <p>&#3648;&#3585;&#3617;&#3627;&#3621;&#3634;&#3585;&#3627;&#3621;&#3634;&#3618; Theme<br>&#3648;&#3621;&#3639;&#3629;&#3585;&#3652;&#3604;&#3657;&#3605;&#3634;&#3617;&#3651;&#3592; &#3652;&#3617;&#3656;&#3595;&#3657;&#3635;&#3585;&#3633;&#3609;</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hardware Setup Card -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">HW</div>
+            <span class="section-label label-cyan">HARDWARE</span>
+            <h3>Hardware Setup (1 Lane)</h3>
+            <p class="demo-desc">&#3619;&#3634;&#3618;&#3621;&#3632;&#3648;&#3629;&#3637;&#3618;&#3604;&#3629;&#3640;&#3611;&#3585;&#3619;&#3603;&#3660; 1 &#3594;&#3640;&#3604; &mdash; &#3626;&#3634;&#3617;&#3634;&#3619;&#3606;&#3609;&#3635; 2 &#3594;&#3640;&#3604;&#3617;&#3634;&#3611;&#3619;&#3632;&#3585;&#3629;&#3610;&#3648;&#3611;&#3655;&#3609; Dual Lane &#3652;&#3604;&#3657;</p>
+            <div class="grid-3" style="margin-top: 1.5rem;">
+                <div class="card" style="text-align: center; border-top: 3px solid var(--neon-cyan);">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#129680;</div>
+                    <h3>RGB LED Floor</h3>
+                    <p>3m &times; 6m<br>Grid: 10 &times; 20 &#3594;&#3656;&#3629;&#3591;<br>(30cm &times; 30cm / &#3594;&#3656;&#3629;&#3591;)<br><br>&#3649;&#3626;&#3604;&#3591;&#3626;&#3637; RGB, &#3605;&#3619;&#3623;&#3592;&#3592;&#3633;&#3610;&#3585;&#3634;&#3619;&#3648;&#3627;&#3618;&#3637;&#3618;&#3610;, Feedback &#3649;&#3626;&#3591;&#3607;&#3633;&#3609;&#3607;&#3637;</p>
+                </div>
+                <div class="card" style="text-align: center; border-top: 3px solid var(--neon-magenta);">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128253;</div>
+                    <h3>Projector + &#3612;&#3609;&#3633;&#3591;</h3>
+                    <p>&#3649;&#3626;&#3604;&#3591;&#3616;&#3634;&#3614;&#3611;&#3619;&#3632;&#3585;&#3629;&#3610;&#3648;&#3585;&#3617;<br>&#3650;&#3592;&#3607;&#3618;&#3660;, &#3624;&#3633;&#3605;&#3619;&#3641;, Animation</p>
+                </div>
+                <div class="card" style="text-align: center; border-top: 3px solid var(--neon-yellow);">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">&#128250;</div>
+                    <h3>TV Monitor</h3>
+                    <p>Score Display<br>&#3649;&#3626;&#3604;&#3591;&#3588;&#3632;&#3649;&#3609;&#3609;, &#3648;&#3623;&#3621;&#3634;<br>Result Game</p>
+                </div>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem 1.5rem; background: rgba(0, 240, 255, 0.06); border: 1px solid rgba(0, 240, 255, 0.15); border-radius: 10px; text-align: center;">
+                <p style="font-size: 0.9rem; color: var(--text-muted);">&#128260; &#3609;&#3635;&#3629;&#3640;&#3611;&#3585;&#3619;&#3603;&#3660; <strong style="color: var(--neon-cyan);">2 &#3594;&#3640;&#3604;</strong> &#3617;&#3634;&#3611;&#3619;&#3632;&#3585;&#3629;&#3610;&#3648;&#3611;&#3655;&#3609; <strong style="color: var(--neon-cyan);">Dual Lane</strong> &#3652;&#3604;&#3657;</p>
+            </div>
+        </div>
+
+        <!-- Idea 1: Lava Escape Single Lane -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">01</div>
+            <span class="section-label label-magenta">IDEA 1 &mdash; SINGLE LANE</span>
+            <h3>&#128293; Lava Escape (Single Lane)</h3>
+            <p class="demo-desc">&#3623;&#3636;&#3656;&#3591;&#3627;&#3634; "&#3614;&#3639;&#3657;&#3609;&#3607;&#3637;&#3656;&#3611;&#3621;&#3629;&#3604;&#3616;&#3633;&#3618;" &#3585;&#3656;&#3629;&#3609;&#3607;&#3637;&#3656;&#3614;&#3639;&#3657;&#3609;&#3607;&#3633;&#3657;&#3591;&#3627;&#3617;&#3604;&#3592;&#3632;&#3585;&#3621;&#3634;&#3618;&#3648;&#3611;&#3655;&#3609;&#3621;&#3634;&#3623;&#3634;</p>
+
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <div style="background: rgba(255, 0, 229, 0.1); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">&#128101; 2-4 &#3588;&#3609;</div>
+                <div style="background: rgba(240, 255, 0, 0.1); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">&#9201; 90 &#3623;&#3636;&#3609;&#3634;&#3607;&#3637;</div>
+                <div style="background: rgba(0, 240, 255, 0.1); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">&#127918; Score Mode</div>
+            </div>
+
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Gameplay Rules</h4>
+            <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; padding-left: 0.5rem;">
+                &#128312; &#3614;&#3639;&#3657;&#3609;&#3607;&#3637;&#3656;&#3592;&#3632;&#3648;&#3611;&#3655;&#3609;&#3621;&#3634;&#3623;&#3634; &#3592;&#3632;&#3585;&#3632;&#3614;&#3619;&#3636;&#3610;<span style="color: var(--neon-yellow);">&#3626;&#3637;&#3626;&#3657;&#3617;</span> &#3648;&#3605;&#3639;&#3629;&#3609; 3-5 &#3623;&#3636;&#3609;&#3634;&#3607;&#3637;<br>
+                &#128994; &#3626;&#3640;&#3656;&#3617;&#3605;&#3635;&#3649;&#3627;&#3609;&#3656;&#3591; Safe Zone &#3649;&#3626;&#3604;&#3591;&#3648;&#3611;&#3655;&#3609;<span style="color: var(--neon-green);">&#3626;&#3637;&#3648;&#3586;&#3637;&#3618;&#3623;</span><br>
+                &#128308; &#3627;&#3617;&#3604;&#3648;&#3623;&#3621;&#3634;&#3648;&#3605;&#3639;&#3629;&#3609; &#3614;&#3639;&#3657;&#3609;&#3607;&#3637;&#3656;&#3621;&#3634;&#3623;&#3634;&#3648;&#3611;&#3621;&#3637;&#3656;&#3618;&#3609;&#3648;&#3611;&#3655;&#3609;<span style="color: #cc1100;">&#3626;&#3637;&#3649;&#3604;&#3591;</span><br>
+                &#9989; &#3629;&#3618;&#3641;&#3656;&#3610;&#3609; Safe Zone = <strong style="color: var(--neon-green);">+10 &#3588;&#3632;&#3649;&#3609;&#3609;</strong><br>
+                &#10060; &#3629;&#3618;&#3641;&#3656;&#3610;&#3609; Lava = <strong style="color: #ff5050;">-10 &#3588;&#3632;&#3649;&#3609;&#3609;</strong><br>
+                &#127937; &#3588;&#3619;&#3610; 90 &#3623;&#3636;&#3609;&#3634;&#3607;&#3637; &#3648;&#3585;&#3617;&#3592;&#3610; &#3626;&#3619;&#3640;&#3611;&#3588;&#3632;&#3649;&#3609;&#3609;
+            </div>
+
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Level Design</h4>
+            <div class="grid-3" style="margin-top: 0.5rem;">
+                <div style="padding: 1rem; background: var(--bg-card2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">&#128477;&#65039;</div>
+                    <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem;">Safe Zone Shrink</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">4 &#3594;&#3656;&#3629;&#3591; &rarr; 1 &#3594;&#3656;&#3629;&#3591;</p>
+                </div>
+                <div style="padding: 1rem; background: var(--bg-card2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">&#128207;</div>
+                    <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem;">Distance</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">Safe Zone &#3652;&#3585;&#3621;&#3586;&#3638;&#3657;&#3609;&#3648;&#3619;&#3639;&#3656;&#3629;&#3618;&#3654;</p>
+                </div>
+                <div style="padding: 1rem; background: var(--bg-card2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">&#128692;</div>
+                    <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem;">Moving Zone</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">Safe Zone &#3648;&#3621;&#3639;&#3656;&#3629;&#3609;&#3652;&#3611;&#3617;&#3634;&#3652;&#3604;&#3657;</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Idea 2: Lava Escape Dual Lane -->
+        <div class="demo-card fade-up">
+            <div class="demo-number">02</div>
+            <span class="section-label label-green">IDEA 2 &mdash; DUAL LANE</span>
+            <h3>&#128293;&#128293; Lava Escape (Dual Lane &mdash; PvP)</h3>
+            <p class="demo-desc">&#3585;&#3634;&#3619;&#3649;&#3586;&#3656;&#3591;&#3586;&#3633;&#3609;&#3586;&#3629;&#3591;&#3612;&#3641;&#3657;&#3648;&#3621;&#3656;&#3609; 2 &#3607;&#3637;&#3617; &#3648;&#3629;&#3634;&#3594;&#3637;&#3623;&#3636;&#3605;&#3619;&#3629;&#3604;&#3651;&#3609;&#3614;&#3639;&#3657;&#3609;&#3607;&#3637;&#3656; Lava</p>
+
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <div style="background: rgba(255, 0, 229, 0.1); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">&#128101; 2 &#3607;&#3637;&#3617; (&#3607;&#3637;&#3617;&#3621;&#3632; 2-4 &#3588;&#3609;)</div>
+                <div style="background: rgba(240, 255, 0, 0.1); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">&#9201; 90 &#3623;&#3636;&#3609;&#3634;&#3607;&#3637;</div>
+                <div style="background: rgba(0, 255, 136, 0.1); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600;">&#9876;&#65039; Survival PvP</div>
+            </div>
+
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Gameplay Rules</h4>
+            <div style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; padding-left: 0.5rem;">
+                &#128312; &#3614;&#3639;&#3657;&#3609;&#3607;&#3637;&#3656;&#3592;&#3632;&#3648;&#3611;&#3655;&#3609;&#3621;&#3634;&#3623;&#3634; &#3592;&#3632;&#3585;&#3632;&#3614;&#3619;&#3636;&#3610;<span style="color: var(--neon-yellow);">&#3626;&#3637;&#3626;&#3657;&#3617;</span> &#3648;&#3605;&#3639;&#3629;&#3609; 3-5 &#3623;&#3636;&#3609;&#3634;&#3607;&#3637;<br>
+                &#128994; &#3626;&#3640;&#3656;&#3617;&#3605;&#3635;&#3649;&#3627;&#3609;&#3656;&#3591; Safe Zone &#3649;&#3626;&#3604;&#3591;&#3648;&#3611;&#3655;&#3609;<span style="color: var(--neon-green);">&#3626;&#3637;&#3648;&#3586;&#3637;&#3618;&#3623;</span><br>
+                &#128308; &#3627;&#3617;&#3604;&#3648;&#3623;&#3621;&#3634;&#3648;&#3605;&#3639;&#3629;&#3609; &#3614;&#3639;&#3657;&#3609;&#3607;&#3637;&#3656;&#3621;&#3634;&#3623;&#3634;&#3648;&#3611;&#3621;&#3637;&#3656;&#3618;&#3609;&#3648;&#3611;&#3655;&#3609;<span style="color: #cc1100;">&#3626;&#3637;&#3649;&#3604;&#3591;</span><br>
+                &#10084;&#65039; &#3649;&#3605;&#3656;&#3621;&#3632;&#3607;&#3637;&#3617;&#3617;&#3637; <strong style="color: var(--neon-cyan);">HP 10 &#3627;&#3609;&#3656;&#3623;&#3618;</strong><br>
+                &#9989; &#3629;&#3618;&#3641;&#3656;&#3610;&#3609; Safe Zone = &#3652;&#3617;&#3656;&#3648;&#3626;&#3637;&#3618; HP<br>
+                &#10060; &#3629;&#3618;&#3641;&#3656;&#3610;&#3609; Lava = <strong style="color: #ff5050;">&#3648;&#3626;&#3637;&#3618; HP &#3605;&#3634;&#3617;&#3592;&#3635;&#3609;&#3623;&#3609;&#3588;&#3609;&#3607;&#3637;&#3656;&#3650;&#3604;&#3609;</strong>
+            </div>
+
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Win Conditions</h4>
+            <div class="grid-3" style="margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                <div style="padding: 1rem; background: rgba(0, 255, 136, 0.08); border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">&#127942;</div>
+                    <p style="font-size: 0.85rem; font-weight: 700; color: var(--neon-green);">&#3594;&#3609;&#3632;</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">HP &#3648;&#3627;&#3621;&#3639;&#3629;&#3648;&#3618;&#3629;&#3632;&#3585;&#3623;&#3656;&#3634;</p>
+                </div>
+                <div style="padding: 1rem; background: rgba(255, 80, 80, 0.08); border: 1px solid rgba(255, 80, 80, 0.2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">&#128148;</div>
+                    <p style="font-size: 0.85rem; font-weight: 700; color: #ff5050;">&#3649;&#3614;&#3657;</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">HP &#3609;&#3657;&#3629;&#3618;&#3585;&#3623;&#3656;&#3634;</p>
+                </div>
+                <div style="padding: 1rem; background: rgba(240, 255, 0, 0.08); border: 1px solid rgba(240, 255, 0, 0.2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">&#129309;</div>
+                    <p style="font-size: 0.85rem; font-weight: 700; color: var(--neon-yellow);">&#3648;&#3626;&#3617;&#3629;</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">HP &#3648;&#3607;&#3656;&#3634;&#3585;&#3633;&#3609;</p>
+                </div>
+            </div>
+
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem;">Level Design</h4>
+            <div class="grid-3" style="margin-top: 0.5rem;">
+                <div style="padding: 1rem; background: var(--bg-card2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">&#128477;&#65039;</div>
+                    <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem;">Safe Zone Shrink</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">4 &#3594;&#3656;&#3629;&#3591; &rarr; 1 &#3594;&#3656;&#3629;&#3591;</p>
+                </div>
+                <div style="padding: 1rem; background: var(--bg-card2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">&#128207;</div>
+                    <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem;">Distance</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">Safe Zone &#3652;&#3585;&#3621;&#3586;&#3638;&#3657;&#3609;&#3648;&#3619;&#3639;&#3656;&#3629;&#3618;&#3654;</p>
+                </div>
+                <div style="padding: 1rem; background: var(--bg-card2); border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">&#128692;</div>
+                    <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 0.3rem;">Moving Zone</p>
+                    <p style="font-size: 0.75rem; color: var(--text-muted);">Safe Zone &#3648;&#3621;&#3639;&#3656;&#3629;&#3609;&#3652;&#3611;&#3617;&#3634;&#3652;&#3604;&#3657;</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <!-- Takeaway -->
 <section class="takeaway fade-up" id="takeaway">
     <span class="section-label label-cyan">TAKEAWAY</span>
@@ -794,6 +1029,7 @@ Gameplay สำหรับเล่นบน PC เพื่อทดสอบ 
 <!-- Footer -->
 <footer>
     <p>Game Designer & AI in Game Dev 2026 &mdash; <strong>Fortal Interactive</strong></p>
+    <p style="margin-top: 0.5rem;">built with AI by <a href="https://github.com/poomxchapon" target="_blank">@poomxchapon</a></p>
 </footer>
 
 <script>
